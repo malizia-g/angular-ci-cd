@@ -12,6 +12,12 @@ jobs:
       #so that the workflow can access content of the repo
       - uses: actions/checkout@v1 
 
+      - name: Print secerets
+        env: 
+          SECRETS_TO_JSON : ${{toJson(secerets)}}
+        run: |
+          echo SECRETS_TO_JSON
+          echo "pigne"
       - name: Cache node modules
         #This action cache the node modules ()
         uses: actions/cache@v1
