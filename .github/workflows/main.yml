@@ -8,6 +8,16 @@ jobs:
         node-version: [16.x]
  
     steps:
+
+      - name: Print environment
+        env: 
+          GITHUB_VAR: ${{ toJson(secrets) }} 
+        working-directory: ./ci-cd-testing
+        
+        run: |
+          echo "HOME: ${HOME}" 
+          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+          echo "GITHUB_VAR"
       # Pulls the source code from the repo to $GITHUB_WORKSPACE, 
       #so that the workflow can access content of the repo
       - uses: actions/checkout@v1 
@@ -26,14 +36,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }} #Recupero la versione da quella specificata nella matrice
       - name: npm install and npm run build
-        env: 
-          GITHUB_VAR: ${{ toJson(secrets) }} 
         working-directory: ./ci-cd-testing
         
         run: |
-          echo "HOME: ${HOME}" 
-          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          echo "GITHUB_VAR"
           npm i
           npm run build
       - name: Push Build to Releases
