@@ -34,9 +34,9 @@ jobs:
           npm i
           npm run build
       - name: Push Build to Releases
-        run: |
-          cd ci-cd-testing/dist
-          ls -a
+        # run: |
+        #   cd ci-cd-testing/dist
+        #   ls -a
         uses: ncipollo/release-action@v1
         with:
           artifacts: "ci-cd-testing/dist/ci-cd-testing/*"
