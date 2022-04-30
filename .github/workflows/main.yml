@@ -34,8 +34,9 @@ jobs:
           npm i
           npm run build
       - name: Push Build to Releases
-        working-directory: ./ci-cd-testing
+        run: ls -a
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/ci-cd-testing/*"
           token: ${{ secrets.github_token }}
+        
