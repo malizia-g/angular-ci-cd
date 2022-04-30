@@ -1,0 +1,36 @@
+on: push
+name: Build Angular
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+ 
+    steps:
+      # Pulls the source code from the repo to $GITHUB_WORKSPACE, 
+      #so that the workflow can access content of the repo
+      - uses: actions/checkout@v1 
+
+      - name: Cache node modules
+        #This action cache the node modules ()
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+        #Installs the node env
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }} #Recupero la versione da quella specificata nella matrice
+      - name: npm install and npm run build
+        run: |
+          npm i
+          npm run build:prod
+      - name: Push Build to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "dist/angular-ci-cd-testing/*"
+          token: ${{ secrets.TOKEN }}
