@@ -17,8 +17,7 @@ jobs:
         run: |
           echo "HOME: ${HOME}" 
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          echo "${ GITHUB_VAR }"
-          echo "${ secrets.github_token }"
+          
 
       - name: Cache node modules
         #This action cache the node modules ()
