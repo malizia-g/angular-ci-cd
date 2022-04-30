@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }} #Recupero la versione da quella specificata nella matrice
       - name: npm install and npm run build
+        working-directory: ./ci-cd-testing
         run: |
           echo "HOME: ${HOME}" 
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
