@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "HOME: ${HOME}" 
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          echo "ls -a"
+          ls -a
           npm i
           npm run build:prod
       - name: Push Build to Releases
