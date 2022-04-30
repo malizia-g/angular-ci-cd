@@ -18,9 +18,7 @@ jobs:
           echo "HOME: ${HOME}" 
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
           echo "GITHUB_VAR"
-      # Pulls the source code from the repo to $GITHUB_WORKSPACE, 
-      #so that the workflow can access content of the repo
-      - uses: actions/checkout@v1 
+          echo "${ secrets.github_token }"
 
       - name: Cache node modules
         #This action cache the node modules ()
@@ -45,5 +43,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/ci-cd-testing/*"
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           
