@@ -32,7 +32,7 @@ jobs:
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
           ls -a
           npm i
-          npm run build:prod
+          npm run build
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
