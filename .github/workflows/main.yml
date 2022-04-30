@@ -9,15 +9,10 @@ jobs:
  
     steps:
 
-      - name: Print environment
-        env: 
-          GITHUB_VAR: ${{ toJson(secrets) }} 
-        working-directory: ./ci-cd-testing
-        
+      - name: Print environment        
         run: |
           echo "HOME: ${HOME}" 
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          
 
       - name: Cache node modules
         #This action cache the node modules ()
