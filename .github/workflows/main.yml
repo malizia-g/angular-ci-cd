@@ -9,12 +9,12 @@ jobs:
  
     steps:
 
-      - name: Print environment
-        env: 
-          GITHUB_VAR: ${{ toJson(secrets) }}      
-        run: |
-          echo "HOME: ${HOME}" 
-          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+      # - name: Print environment
+      #   env: 
+      #     GITHUB_VAR: ${{ toJson(secrets) }}      
+      #   run: |
+      #     echo "HOME: ${HOME}" 
+      #     echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
           
 
       - name: Cache node modules
