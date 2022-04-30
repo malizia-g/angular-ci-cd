@@ -30,13 +30,12 @@ jobs:
         run: |
           echo "HOME: ${HOME}" 
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          ls -a
+          echo "${ secrets.TOKEN }" 
           npm i
           npm run build
       - name: Push Build to Releases
-        run: |
-          echo "${ secrets.TOKEN }" 
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/ci-cd-testing/*"
           token: ${{ secrets.TOKEN }}
+          
