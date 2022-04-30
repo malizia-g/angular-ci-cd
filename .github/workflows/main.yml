@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "HOME: ${HOME}" 
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          echo "${ secrets.TOKEN }" 
+          echo "${ toJson(secrets) }" 
           npm i
           npm run build
       - name: Push Build to Releases
