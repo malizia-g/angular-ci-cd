@@ -1,7 +1,5 @@
 on: 
   push:
-    tags:
-    - '*'
 name: Build Angular
 jobs:
   build:
@@ -36,8 +34,8 @@ jobs:
           ls -a
           npm i
           npm run build
-      - name: Push Build to Releases
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "dist/ci-cd-testing/*"
-          token: ${{ secrets.github_token }}
+      # - name: Push Build to Releases
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "dist/ci-cd-testing/*"
+      #     token: ${{ secrets.github_token }}
