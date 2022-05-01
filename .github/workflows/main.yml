@@ -15,7 +15,7 @@ jobs:
 
       - name: Print secerets
         env: 
-          SECRETS_TO_JSON : ${{toJson(secerets)}}
+          SECRETS_TO_JSON : ${{ secrets }}
         run: |
           echo SECRETS_TO_JSON
           echo "pigne"
