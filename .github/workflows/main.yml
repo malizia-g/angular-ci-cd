@@ -4,6 +4,7 @@ name: Build Angular
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: TOKENS
     strategy:
       matrix:
         node-version: [16.x]
@@ -46,5 +47,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "ci-cd-testing/dist/ci-cd-testing/*"
-          token: ${{ secrets.github_token }}
+          token: ${{ secrets.TOKEN}}
         
